@@ -12,8 +12,10 @@ html {
 }
 
 body {
+	font-family: 'Lato', sans-serif;
 	margin: 0;
 	background: #2d1e6b;
+	color-scheme: dark;
 }
 
 main {
@@ -67,8 +69,7 @@ button:-moz-focusring,
 	outline: none;
 }
 
-//for FireFox
-::-moz-focus-inner,
+for FireFox ::-moz-focus-inner,
 ::-moz-focus-outer {
 	border: 0;
 	outline: none;
@@ -87,7 +88,7 @@ ol {
 }
 
 .container {
-	max-width: 1468px;
+	max-width: 1440px;
 	padding: 0 15px;
 	margin: 0 auto;
 }

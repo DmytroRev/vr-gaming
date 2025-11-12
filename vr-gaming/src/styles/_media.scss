@@ -1,47 +1,47 @@
-@import 'sass:meta';
-@import 'sass:map';
+@use 'sass:meta';
+@use 'sass:map';
 
 $breakpoints: (
-  xss: 0px,
-  xs: 425px,
-  sm: 576px,
-  md: 768px,
-  lg: 992px,
-  xl: 1200px,
-  xxl: 1400px,
+	xss: 0px,
+	xs: 425px,
+	sm: 576px,
+	md: 768px,
+	lg: 992px,
+	xl: 1200px,
+	xxl: 1400px,
 ) !default;
 
 @function _to-px($value) {
-  @if meta.type-of($value) == 'number' {
-    @if unit($value) == '' {
-      @return $value * 1px;
-    }
-    @return $value;
-  }
+	@if meta.type-of($value) == 'number' {
+		@if unit($value) == '' {
+			@return $value * 1px;
+		}
+		@return $value;
+	}
 
-  @if meta.type-of($value) == 'string' and map.has-key($breakpoints, $value) {
-    @return map.get($breakpoints, $value);
-  }
+	@if meta.type-of($value) == 'string' and map.has-key($breakpoints, $value) {
+		@return map.get($breakpoints, $value);
+	}
 
-  @return $value;
+	@return $value;
 }
 
 @mixin media($bp, $dir: null) {
-  $px: _to-px($bp);
+	$px: _to-px($bp);
 
-  @if $dir == null or $dir == '>=' or $dir == '>' {
-    @media (min-width: #{$px}) {
-      @content;
-    }
-  } @else if $dir == '<' or $dir == '<=' {
-    $max: $px - 0.02px;
-    @media (max-width: #{$max}) {
-      @content;
-    }
-  } @else {
-    @warn "Unsupported media direction `#{$dir}`. Use null/'>=' or '<'.";
-    @media (min-width: #{$px}) {
-      @content;
-    }
-  }
+	@if $dir == null or $dir == '>=' or $dir == '>' {
+		@media (min-width: #{$px}) {
+			@content;
+		}
+	} @else if $dir == '<' or $dir == '<=' {
+		$max: $px - 0.02px;
+		@media (max-width: #{$max}) {
+			@content;
+		}
+	} @else {
+		@warn "Unsupported media direction `#{$dir}`. Use null/'>=' or '<'.";
+		@media (min-width: #{$px}) {
+			@content;
+		}
+	}
 }

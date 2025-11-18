@@ -46,9 +46,6 @@
 			min-height: 1185px;
 		}
 
-		&__info-wrapper {
-		}
-
 		&__text-wrapper {
 			display: flex;
 			flex-direction: column;

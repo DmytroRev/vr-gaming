@@ -87,7 +87,7 @@
 		}
 
 		&__nav {
-			@include media(md, '<') {
+			@include media(lg, '<') {
 				position: fixed;
 				top: 0;
 				left: 0;
@@ -153,14 +153,13 @@
 				transform: scale(1.1);
 			}
 
-			@include media(md, '<') {
+			@include media(lg, '<') {
 				position: absolute;
 				right: 60px;
 			}
 		}
 	}
 
-	/* --- БУРГЕР --- */
 	.burger {
 		display: none;
 		width: 30px;
@@ -185,31 +184,31 @@
 		span {
 			top: 50%;
 			transform: translateY(-50%);
-		}
 
-		span::before {
-			top: -8px;
-		}
+			&::before {
+				top: -8px;
+			}
 
-		span::after {
-			top: 8px;
+			&::after {
+				top: 8px;
+			}
 		}
 
 		&.open {
 			span {
 				background: transparent;
-			}
-			span::before {
-				transform: rotate(45deg);
-				top: 0;
-			}
-			span::after {
-				transform: rotate(-45deg);
-				top: 0;
+				&::before {
+					transform: rotate(45deg);
+					top: 0;
+				}
+				&::after {
+					transform: rotate(-45deg);
+					top: 0;
+				}
 			}
 		}
 
-		@include media(md, '<') {
+		@include media(lg, '<') {
 			display: block;
 		}
 	}

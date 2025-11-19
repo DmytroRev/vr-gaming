@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 	import { useIsMobile } from '@/utils/isMobile';
 	import { computed } from 'vue';
+	import BasicButton from '../basic/BasicButton.vue';
+	import CounterBlock from '../counter-block/CounterBlock.vue';
 
 	const { isMobile } = useIsMobile();
 
@@ -17,13 +19,20 @@
 			<div class="hero__text-wrapper">
 				<h2 class="hero__title">
 					Let your <br />
-					mind <span class="hero__title--colored-text">explore</span><br />
+					mind <span class="hero__title colored-text">explore</span><br />
 					new world
 				</h2>
 				<div class="hero__description">
 					Playing electronic games, whether through consoles, computers, mobile phones or another medium altogether.
 					Gaming is a nuanced term that suggests regular gameplay, possibly as a hobby.
 				</div>
+			</div>
+			<div class="hero__bottom-block">
+				<div class="hero__button-wrapper">
+					<BasicButton label="Buy now" with-bg />
+					<BasicButton label="Play now" colored-text with-border />
+				</div>
+				<CounterBlock />
 			</div>
 		</div>
 		<div class="hero__image-wrapper"><img :src="bghero" alt="hero Image" /></div>
@@ -66,15 +75,6 @@
 			@include media(md, '>') {
 				font-size: 70px;
 			}
-
-			&--colored-text {
-				background: linear-gradient(270deg, #ff00c8, #ff7b00, #00eaff, #ff00c8);
-				background-size: 800% 800%;
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-
-				animation: gradientLoop 10s ease-in-out infinite;
-			}
 		}
 
 		&__description {
@@ -88,6 +88,22 @@
 			}
 		}
 
+		&__bottom-block {
+			display: flex;
+			flex-direction: column;
+			row-gap: 45px;
+
+			@include media(md, '>') {
+				row-gap: 65px;
+			}
+		}
+
+		&__button-wrapper {
+			display: flex;
+			gap: 20px;
+			align-items: center;
+		}
+
 		.hero__image-wrapper {
 			position: absolute;
 			right: -15px;
@@ -95,6 +111,7 @@
 			bottom: 40px;
 			height: 100%;
 			max-height: 530px;
+			pointer-events: none;
 
 			@include media(md, '>') {
 				min-height: 950px;
@@ -126,18 +143,6 @@
 					mask-size: 100% 100%;
 				}
 			}
-		}
-	}
-
-	@keyframes gradientLoop {
-		0% {
-			background-position: 0% 50%;
-		}
-		50% {
-			background-position: 100% 50%;
-		}
-		100% {
-			background-position: 0% 50%;
 		}
 	}
 </style>

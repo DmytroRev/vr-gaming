@@ -98,3 +98,24 @@ img {
 	display: block;
 	height: auto;
 }
+
+.colored-text {
+	background: linear-gradient(270deg, #ff00c8, #ff7b00, #00eaff, #ff00c8);
+	background-size: 800% 800%;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+	animation: gradientLoop 10s ease-in-out infinite;
+}
+
+@keyframes gradientLoop {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}

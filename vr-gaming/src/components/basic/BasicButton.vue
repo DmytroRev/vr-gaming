@@ -19,11 +19,16 @@
 		border: none;
 		cursor: pointer;
 		transform: skew(-20deg);
-		height: 74px;
-		max-width: 205px;
+		height: 44px;
+		max-width: 150px;
 		width: 100%;
 		background: transparent;
 		transition: transform 0.5s ease;
+
+		@include media(md, '>') {
+			height: 74px;
+			max-width: 205px;
+		}
 
 		&:hover {
 			transform: skew(-20deg) scale(1.03);

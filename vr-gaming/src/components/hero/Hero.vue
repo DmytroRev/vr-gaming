@@ -3,6 +3,7 @@
 	import { computed } from 'vue';
 	import BasicButton from '../basic/BasicButton.vue';
 	import CounterBlock from '../counter-block/CounterBlock.vue';
+	import CircleText from '../circleText/CircleText.vue';
 
 	const { isMobile } = useIsMobile();
 
@@ -35,7 +36,8 @@
 				<CounterBlock />
 			</div>
 		</div>
-		<div class="hero__image-wrapper"><img :src="bghero" alt="hero Image" /></div>
+		<div class="hero__img-wrapper"><img :src="bghero" alt="hero Image" /></div>
+		<CircleText decoration-deg />
 	</div>
 </template>
 
@@ -43,17 +45,12 @@
 	.hero {
 		position: relative;
 		margin-top: 25px;
-		min-height: 760px;
+		min-height: 1120px;
 		height: 100%;
 
-		@include media(md, '>') {
-			display: flex;
-			min-height: 840px;
-		}
-
-		@include media(lg, '<') {
-			min-height: 1185px;
-		}
+		// @include media(lg, '<') {
+		// 	min-height: 1185px;
+		// }
 
 		&__text-wrapper {
 			display: flex;
@@ -89,12 +86,16 @@
 		}
 
 		&__bottom-block {
+			position: absolute;
+			bottom: 0;
 			display: flex;
 			flex-direction: column;
 			row-gap: 45px;
 
 			@include media(md, '>') {
 				row-gap: 65px;
+				position: static;
+				width: max-content;
 			}
 		}
 
@@ -102,13 +103,14 @@
 			display: flex;
 			gap: 20px;
 			align-items: center;
+			justify-content: center;
 		}
 
-		.hero__image-wrapper {
+		.hero__img-wrapper {
 			position: absolute;
 			right: -15px;
 			width: 100vw;
-			bottom: 40px;
+			bottom: 270px;
 			height: 100%;
 			max-height: 530px;
 			pointer-events: none;
@@ -129,7 +131,7 @@
 				object-fit: cover;
 				mix-blend-mode: color-dodge;
 				filter: brightness(0.95) contrast(1.2);
-				opacity: 0.8;
+				animation: shine 2.5s ease-in-out infinite alternate;
 
 				@include media(md, '>') {
 					width: 100%;
@@ -143,6 +145,57 @@
 					mask-size: 100% 100%;
 				}
 			}
+		}
+
+		:deep() {
+			.marquee--with-deg {
+				position: absolute;
+				bottom: 240px;
+				left: -15px;
+				width: 102vw;
+
+				-webkit-mask-image: linear-gradient(to right, transparent 0%, black 5%);
+				-webkit-mask-repeat: no-repeat;
+				-webkit-mask-size: 100% 100%;
+
+				mask-image: linear-gradient(to right, transparent 0%, black 5%);
+				mask-repeat: no-repeat;
+				mask-size: 100% 100%;
+
+				&::after {
+					position: absolute;
+					content: '';
+					width: 100%;
+					height: 100%;
+					background: linear-gradient(36deg, rgba(66, 39, 123, 0.8) 0%, rgba(66, 39, 123, 0.8) 100%);
+					filter: blur(3px);
+					z-index: -1;
+				}
+
+				&::before {
+					position: absolute;
+					content: '';
+					width: 30px;
+					height: 100%;
+					right: 0;
+					-webkit-mask-image: linear-gradient(to left, transparent 0%, black 5%);
+					-webkit-mask-repeat: no-repeat;
+					-webkit-mask-size: 100% 100%;
+
+					mask-image: linear-gradient(to left, transparent 0%, black 5%);
+					mask-repeat: no-repeat;
+					mask-size: 100% 100%;
+				}
+			}
+		}
+	}
+
+	@keyframes shine {
+		from {
+			opacity: 0.8;
+		}
+		to {
+			opacity: 0.5;
 		}
 	}
 </style>

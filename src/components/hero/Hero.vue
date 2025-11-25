@@ -6,7 +6,6 @@
 	import CircleText from '../circleText/CircleText.vue';
 
 	const { isMobile } = useIsMobile();
-
 	const bghero = computed(() => {
 		return isMobile.value
 			? new URL('@/assets/img/hero/hero-bg-mob.png', import.meta.url).href

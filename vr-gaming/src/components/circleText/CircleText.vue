@@ -1,5 +1,5 @@
 <script setup>
-	const props = defineProps({
+	defineProps({
 		repeat: { type: Number, default: 6 },
 		decorationBg: { type: Boolean, default: true },
 		decorationDeg: { type: Boolean, default: false },

@@ -5,7 +5,7 @@
 		decorationDeg?: boolean;
 	}
 
-	const props = defineProps<CircleTextProps>();
+	defineProps<CircleTextProps>();
 </script>
 
 <template>

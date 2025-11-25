@@ -5,7 +5,11 @@
 		decorationDeg?: boolean;
 	}
 
-	defineProps<CircleTextProps>();
+	const props = defineProps<CircleTextProps>();
+
+	const repeat = props.repeat ?? 6;
+	const decorationBg = props.decorationBg ?? true;
+	const decorationDeg = props.decorationDeg ?? false;
 </script>
 
 <template>

@@ -1,9 +1,11 @@
-<script setup>
-	defineProps({
-		repeat: { type: Number, default: 6 },
-		decorationBg: { type: Boolean, default: true },
-		decorationDeg: { type: Boolean, default: false },
-	});
+<script setup lang="ts">
+	interface CircleTextProps {
+		repeat?: number;
+		decorationBg?: boolean;
+		decorationDeg?: boolean;
+	}
+
+	const props = defineProps<CircleTextProps>();
 </script>
 
 <template>

@@ -2,6 +2,7 @@
 	import { SwiperSlide } from 'swiper/vue';
 	import SwiperComponent from '@/modules/SwiperComponent.vue';
 	import { ref } from 'vue';
+	import BasicButton from '../basic/BasicButton.vue';
 
 	const slideImg = ref(5);
 
@@ -10,6 +11,13 @@
 
 <template>
 	<div class="benefits">
+		<div class="benefits__heading-text">
+			<h2 class="benefits__title">choose your <br /><span class="colored-text">favorite</span> games</h2>
+			<p class="benefits__description">
+				Offer sneak peeks and previews of upcoming games, including trailers, screenshots, and information about
+				release.
+			</p>
+		</div>
 		<SwiperComponent>
 			<SwiperSlide v-for="(img, index) in images" :key="index">
 				<div class="card">
@@ -17,14 +25,51 @@
 				</div>
 			</SwiperSlide>
 		</SwiperComponent>
+		<div class="benefits__btns-wrapper">
+			<BasicButton label="View All" with-bg />
+			<BasicButton label="Play now" colored-text with-border />
+		</div>
 	</div>
 </template>
 
 <style lang="scss" scoped>
 	.benefits {
-		margin-top: 120px;
-		padding-bottom: 100px;
-		min-height: 1000px;
+		padding: 50px 0;
+
+		&__heading-text {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			flex-direction: column;
+			gap: 12px;
+			margin-bottom: 25px;
+
+			@include media(md, '>') {
+				margin-bottom: 40px;
+			}
+		}
+
+		&__title {
+			font-weight: 800;
+			font-size: 34px;
+			text-align: center;
+			text-transform: uppercase;
+
+			@include media(md, '>') {
+				font-size: 68px;
+			}
+		}
+
+		&__description {
+			font-weight: 400;
+			font-size: 16px;
+			text-align: center;
+			color: #ffffffab;
+
+			@include media(md, '>') {
+				max-width: 520px;
+			}
+		}
 
 		.card {
 			display: flex;
@@ -52,6 +97,18 @@
 
 		:deep(.swiper-slide-active img) {
 			filter: grayscale(0%);
+		}
+
+		&__btns-wrapper {
+			display: flex;
+			gap: 20px;
+			justify-content: center;
+			margin-top: 30px;
+			align-items: center;
+
+			@include media(md, '>') {
+				margin-top: 50px;
+			}
 		}
 	}
 </style>

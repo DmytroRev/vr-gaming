@@ -22,7 +22,7 @@
 		height: 500px;
 		background: radial-gradient(circle, rgba(221, 0, 184, 0.64) 0%, rgba(221, 0, 184, 0) 65%);
 		pointer-events: none;
-		animation: shine 7s infinite alternate;
+		animation: shine 10s infinite alternate;
 		z-index: 1;
 
 		@include media(md, '>') {
@@ -41,6 +41,7 @@
 			opacity: 0.6;
 			width: 700px;
 			height: 700px;
+
 			@include media(md, '>') {
 				width: 1000px;
 				height: 1000px;

@@ -14,6 +14,7 @@
 		:modules="modules"
 		class="mySwiper"
 		loop
+		:breakpoints="breakpoints"
 	>
 		<slot />
 	</swiper>
@@ -33,8 +34,32 @@
 			SwiperSlide,
 		},
 		setup() {
+			const breakpoints = {
+				0: {
+					slidesPerView: 1,
+					centeredSlides: false,
+				},
+				768: {
+					slidesPerView: 2,
+					centeredSlides: true,
+				},
+				1024: {
+					slidesPerView: 3,
+					centeredSlides: true,
+				},
+			};
+			const coverflowEffect = {
+				rotate: 50,
+				stretch: 0,
+				depth: 100,
+				modifier: 1,
+				slideShadows: true,
+			};
+
 			return {
 				modules: [EffectCoverflow],
+				breakpoints,
+				coverflowEffect,
 			};
 		},
 	};
@@ -43,8 +68,6 @@
 <style>
 	.swiper {
 		width: 100%;
-		padding-top: 50px;
-		padding-bottom: 50px;
 	}
 
 	.swiper-slide {

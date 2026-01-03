@@ -47,6 +47,10 @@
 		min-height: 1120px;
 		height: 100%;
 
+		@include media(md, '>') {
+			min-height: 1020px;
+		}
+
 		// @include media(lg, '<') {
 		// 	min-height: 1185px;
 		// }
